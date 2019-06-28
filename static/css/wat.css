@@ -1,0 +1,26 @@
+
+.hover-gif {
+	border: 1px solid black;
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+}
+
+.hover-gif:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.header a {
+    color: black;
+    text-decoration: none;
+}
+
+.header a:hover {
+    color: #a00;
+    text-decoration: none;
+}
+
+.site-description {
+    float: right;
+    margin-top: -27px;
+}

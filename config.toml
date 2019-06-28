@@ -8,7 +8,6 @@ pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
 [params]
-subtitle = "a place for contemplation"
 featherIconsCDN = true
 
 [[params.social]]
