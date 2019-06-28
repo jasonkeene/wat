@@ -1,0 +1,9 @@
+# build dir
+/public/
+
+# mac stuff
+.DS_Store
+.DS_Store?
+._*
+.Spotlight*
+.Trashes
