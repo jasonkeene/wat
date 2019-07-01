@@ -45,11 +45,11 @@ func main() {
 	waitToBeUp(addr)
 
 	client := rpc2.NewClient(addr)
+	client.Continue()
 	defer func() {
 		client.Halt()
 		client.Detach(false)
 	}()
-	client.Continue()
 
 	locations, err := client.FindLocation(api.EvalScope{
 		GoroutineID: -1,
@@ -60,6 +60,9 @@ func main() {
 	}
 	if len(locations) != 1 {
 		log.Fatalf("Too many locations found for symbol: %s (%d)", symbol, len(locations))
+	}
+	if locations[0].PC == 0 {
+		log.Fatalf("Invalid memory address for symbol: %s (0)", symbol)
 	}
 	pc := locations[0].PC
 
