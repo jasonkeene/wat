@@ -175,5 +175,5 @@ do as well. Stay tuned!
 [thread]: https://groups.google.com/d/msg/golang-dev/m0Q60EEydX0/pRBY6BrShqcJ
 
 [dependency-graph]: /images/dependency-graph.png
-[streetlight-effect]: /images/streetlight-effect.jpg
+[streetlight-effect]: /images/streetlight.png
 [automating-delve]: /posts/automating-delve/
