@@ -1,6 +1,9 @@
 ---
 title: "Automating Delve"
 date: 2019-06-28T09:21:57-06:00
+description: |
+    How to write programs that use Delve's API to provide powerful and
+    effective instrumentation.
 ---
 
 In my [last post][last-post], we discussed the different forms of

@@ -1,6 +1,9 @@
 ---
 title: "Instrumentation and Go"
 date: 2019-06-25T10:27:18-06:00
+description: |
+    What instrumentation is, what kinds of instrumataion are available for Go
+    programs, when to use them, and what dynamic instrumentation is.
 ---
 
 Instrumentation is anything that allows you to make measurements. For example
