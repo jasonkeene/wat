@@ -120,8 +120,8 @@ Next, we need to wait for the listener to be up:
 waitToBeUp(addr)
 ```
 
-This function attempts to dial the adder multiple times. If it hasn't come up
-in 5 seconds it will exit with an error:
+This function attempts to dial the address multiple times. If it hasn't come
+up in 5 seconds it will exit with an error:
 
 ```go
 func waitToBeUp(addr string) {
