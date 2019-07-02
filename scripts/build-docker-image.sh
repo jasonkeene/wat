@@ -2,6 +2,7 @@
 
 set -Eeuo pipefail
 
+rm -r public
 hugo
 pushd public 2> /dev/null
     docker build \
