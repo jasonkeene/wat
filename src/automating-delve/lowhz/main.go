@@ -140,7 +140,7 @@ func getFlags() (int, string) {
 func waitToBeUp(addr string) {
 	done := time.After(5 * time.Second)
 	for {
-		conn, err := net.Dial("tcp", addr)
+		conn, err := net.DialTimeout("tcp", addr, 2*time.Second)
 		if err == nil {
 			conn.Close()
 			return
