@@ -233,11 +233,10 @@ switching between the process, kernel, and debugger. Additionally, the time
 the process is suspended is small but it adds up to significant overhead when
 the breakpoints are firing frequently.
 
-In the [next post][next-post], we will investigate using uprobes and BPF to
+In the next post, we will investigate using uprobes and BPF to
 instrument at a high rate!
 
 [last-post]: /posts/instrumentation-and-go/
-[next-post]: #
 [gdb]: /images/gdb.gif
 [ptrace]: http://man7.org/linux/man-pages/man2/ptrace.2.html
 [delve-api-client]: https://godoc.org/github.com/go-delve/delve/service/rpc2#RPCClient
