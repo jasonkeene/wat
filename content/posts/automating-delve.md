@@ -23,7 +23,9 @@ and write to its registers and memory and single step through the program.
 
 Since the debugger can write to the memory of the tracee, this allows it to
 set breakpoints that will suspend execution of the tracee once they are hit.
-It is super interesting how this works. To set a breakpoint the debugger:
+We can then inspect the state of the tracee, allowing us to add arbitrary
+insturmentation logic. It is super interesting how this works. To set a
+breakpoint the debugger:
 
 1. Saves a copy of the instruction from the tracee's memory where the
    breakpoint should go
@@ -153,9 +155,9 @@ defer func() {
 ```
 
 The first thing the client needs to do is to tell the debugger to continue the
-process. This makes sure it isn't suspended. We then defer some cleanup
-routines to detach the debugger safely from the process when our controller
-exits.
+process. This makes sure it isn't suspended for longer than is needed durring
+this setup phase. We then defer some cleanup routines to detach the debugger
+safely from the process when our controller exits.
 
 We now need to find what instruction to instrument. We know our function name
 is `doWork`. All symbol names in Go binaries are fully qualified so the symbol
@@ -188,8 +190,7 @@ We are now ready to start making some measurements. Here is the code to do so:
 for {
 	client.Halt()
 	client.CreateBreakpoint(bp)
-	stateCh := client.Continue()
-	state := <-stateCh:
+	state := <-client.Continue()
 	client.ClearBreakpointByName(bp.Name)
 	client.Continue()
 
@@ -232,7 +233,7 @@ switching between the process, kernel, and debugger. Additionally, the time
 the process is suspended is small but it adds up to significant overhead when
 the breakpoints are firing frequently.
 
-In the [next post][next-post], we will investigate using uprobes and eBPF to
+In the [next post][next-post], we will investigate using uprobes and BPF to
 instrument at a high rate!
 
 [last-post]: /posts/instrumentation-and-go/
