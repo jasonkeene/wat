@@ -214,8 +214,8 @@ Let's run this and see what happens!
     <source src="/video/counter-lowhz.mp4" type="video/mp4">
 </video>
 
-On the left you see the counter program running. I add some additional
-instrumentation to output the counter state and increment rate.  On the right
+On the left you see the counter program running. I added some additional
+instrumentation to output the counter state and increment rate. On the right
 is our controller process that spawns delve You can see that when
 instrumentation is added the rate is barely affected.
 
