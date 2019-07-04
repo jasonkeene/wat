@@ -234,7 +234,7 @@ the process is suspended is small but it adds up to significant overhead when
 the breakpoints are firing frequently.
 
 In the next post, we will investigate using uprobes and BPF to
-instrument at a high rate!
+instrument events that occur at a higher frequency!
 
 [last-post]: /posts/instrumentation-and-go/
 [gdb]: /images/gdb.gif
