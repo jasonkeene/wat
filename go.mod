@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/go-delve/delve v1.2.0
+	github.com/iovisor/gobpf v0.0.0-20190329163444-e0d8d785d368
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/mattn/go-isatty v0.0.8 // indirect
 	github.com/pkg/profile v1.3.0 // indirect

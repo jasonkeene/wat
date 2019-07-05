@@ -1,0 +1,10 @@
+#!/usr/bin/env bpftrace
+
+uprobe:/tmp/counter:"main.doWork" {
+    @ = *uaddr("main.counter");
+}
+
+interval:s:1 {
+    printf("counter: %d\t %d ops/sec\n", @, @-@prev);
+    @prev = @;
+}
