@@ -12,21 +12,18 @@ import (
 	"golang.org/x/text/message"
 )
 
-const source string = `
-#include <uapi/linux/ptrace.h>
-
+const bpfSource = `
 BPF_ARRAY(count, u64, 1);
 
-int read_counter(struct pt_regs *ctx) {
+int read_counter()
+{
 	u64 *counterPtr = (u64 *)%d;
 
 	int first = 0;
 	u64 zero = 0, *val;
 	val = count.lookup_or_init(&first, &zero);
 
-	u64 counter;
-	bpf_probe_read(&counter, sizeof(counter), counterPtr);
-	*val = counter;
+	bpf_probe_read(val, sizeof(*counterPtr), counterPtr);
 
 	return 0;
 }
@@ -35,7 +32,7 @@ int read_counter(struct pt_regs *ctx) {
 func main() {
 	counterAddr := lookupSym("/tmp/counter", "main.counter")
 
-	m := bpf.NewModule(fmt.Sprintf(source, counterAddr), []string{})
+	m := bpf.NewModule(fmt.Sprintf(bpfSource, counterAddr), nil)
 	defer m.Close()
 
 	probe, err := m.LoadUprobe("read_counter")
