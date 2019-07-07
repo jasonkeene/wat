@@ -84,14 +84,14 @@ programs to uprobes to handle events that occur in your programs.
 Of course, we need some help in creating these BPF programs. We need to write
 them in some language and they need to get compiled into the BPF bytecode,
 injected into the kernel, attached to our uprobes, and detached when we are
-done. Here is an overview of the process:
+done. Fortunately, there is an amazing framework called BCC that does all of
+this for us. Here is an overview of the process:
 
 <video controls>
     <source src="/video/bpf.mp4" type="video/mp4">
 </video>
 
-Fortunately, there is an amazing framework called BCC that does all of this for
-us. There are two great frontends for BCC that I have used to instrument Go
+There are two great frontends for BCC that I have used to instrument Go
 programs: bpftrace and gobpf. Let's check them out!
 
 ## bpftrace
