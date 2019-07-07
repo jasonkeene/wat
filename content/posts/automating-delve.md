@@ -45,10 +45,12 @@ When you tell the debugger to continue it:
 
 So cool! And you thought debuggers were magic!
 
-This animation demonstrates the overall flow of what happens when you hit a
-breakpoint:
+This animation demonstrates the overall flow of what happens when you attach
+and hit a breakpoint:
 
-<img src="/images/ptrace-breakpoint.png" data-animated-src="/images/ptrace-breakpoint.gif" class="hover-gif" />
+<video controls>
+    <source src="/video/ptrace.mp4" type="video/mp4">
+</video>
 
 As you can see, when the debugger is running, your code is suspended. That is
 important to keep in mind.
