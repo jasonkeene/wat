@@ -154,7 +154,8 @@ list where Rob Pike and others were discussing this stuff. Rob said:
 
 > I want a programming interface above which I can build whatever is needed,
 > either generally-useful tools or ad hoc probes. And the programming language
-> I want to use for this is Go.
+> I want to use for this is Go.  
+> -- <cite>Rob Pike</cite>
 
 What Rob wants is a flashlight. Unfortunately, I don't believe a toolkit that
 matches his specific criteria exists, yet. However, there have been many
