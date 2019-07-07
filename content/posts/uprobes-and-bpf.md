@@ -46,7 +46,9 @@ programs you are not interested in.
 
 Let's see what the execution flow looks like for uprobes:
 
-// TODO: create graphic to demostrate uprobes flow
+<video controls>
+    <source src="/video/uprobes.mp4" type="video/mp4">
+</video>
 
 There are a few options for creating the actual uprobe handler that runs in
 the kernel. You could write a kernel module, but this has massive downsides in
@@ -85,7 +87,9 @@ them in some language and they need to get compiled into the BPF bytecode,
 injected into the kernel, attached to our uprobes, and detached when we are
 done. Here is an overview of the process:
 
-// TODO: create graphic to demostrate bpf flow
+<video controls>
+    <source src="/video/bpf.mp4" type="video/mp4">
+</video>
 
 Fortunately, there is an amazing framework called BCC that does all of this for
 us. There are two great frontends for BCC that I have used to instrument Go
