@@ -153,9 +153,11 @@ previous counter state.
 
 Let's see this run:
 
-// TODO: record/edit bpftrace video
+<video controls>
+    <source src="/video/bpftrace.mp4" type="video/mp4">
+</video>
 
-Wow! 300,000 ops/sec. That is a lot better than the 80 ops/sec we could do
+Wow! Over 300,000 ops/sec. That is a lot better than the 80 ops/sec we could do
 with traditional ptrace. Keep in mind that we are instrumenting every
 invocation of `doWork`. This is good enough for a lot of use cases. Many
 production workloads do under 300 kops/sec/thread. However, there are some
@@ -166,13 +168,13 @@ prepared to modify bpftrace itself. Secondly, we have to write code in some
 other language and it is not always clear what this language is doing. It
 would be much better to write these programs in Go.
 
-<img src="https://i.kym-cdn.com/photos/images/original/000/155/594/yesitis2.gif" data-animated-src="https://i.kym-cdn.com/photos/images/original/000/155/594/yesitis2.gif" class="hover-gif" />
+<img src="/images/yesitis.png" data-animated-src="/images/yesitis.gif" class="hover-gif" />
 
 ## gobpf
 
 gobpf provides Go bindings for the BCC framework. BCC allows you to compile BPF
 programs that are written in C. So we get to write our user space code in Go
-but the kernel bit needs to be in C. Also, since BCC itself is written in C
+but the kernel bit needs to be in C. Also, since BCC itself is written in C,
 the gobpf bindings use cgo. So yeah, not ideal but at least we get to write
 some Go!
 
@@ -181,7 +183,7 @@ bpftrace program above. The Go program will compile our BPF program that we'll
 write in C, inject it into the kernel, attach a uprobe to it, and report the
 resulting data. Since the C part is the most gnarly we should tackle it first!
 
-> If it's your job to eat two frogs, it's best to eat the biggest one first.
+> If it's your job to eat two frogs, it's best to eat the biggest one first.  
 > -- <cite>Mark Twain</cite>
 
 Ok, we start by declaring our string:
@@ -191,15 +193,15 @@ const bpfSource = ``
 ```
 
 Inside this string will be all the C source code, simple enough. Let's start
-by using one of the BCC macros that will allow us to communicate from the BCC
-program user space:
+by adding one of the BCC macros that will allow us to communicate from the BCC
+program to the Go program:
 
 ```c
 BPF_ARRAY(count, u64, 1);
 ```
 
 I chose `BPF_ARRAY` for this example but there are many options. The important
-thing about this macro is that it will give us a symbol `count` that will
+thing about this macro is that it will give us a variable `count` that will
 allow us to share values of type `u64` (`uint64` in Go).
 
 ```c
@@ -208,10 +210,10 @@ int read_counter() {}
 
 We can now define a function `read_counter` that will handle our uprobe
 events. It will read the counter and store it in our `BPF_ARRAY`. We will need
-to do a few things inside the function.
+to do a few things inside this function.
 
-First, we need to know where in the process's memory to read the counter. We
-can declare and initializes a pointer to this address:
+First, we need to know where in the process's memory the counter is located so
+we can read it. We can declare and initializes a pointer to this address:
 
 ```c
 u64 *counterPtr = (u64 *)%d;
@@ -299,7 +301,9 @@ for {
 When you put it all together you get the same performance as the `bpftrace`
 example:
 
-// TODO: record and edit video
+<video controls>
+    <source src="/video/gobpf.mp4" type="video/mp4">
+</video>
 
 This can seem like more work for the same result, however, you get to write
 your user space code in Go! This affords way more power and control than what
@@ -317,7 +321,7 @@ do run into problems make sure to file issues. I know it can seem like a
 hassle but I've found the maintainers of these projects to be very helpful,
 kind, and considerate.
 
-In my next post, I will investigate using a tool called Frida to do
+In my next post, I will investigate using a tool called Frida to do dynamic
 instrumentation entirely in user space!
 
 [virtualbox]: https://www.virtualbox.org/
