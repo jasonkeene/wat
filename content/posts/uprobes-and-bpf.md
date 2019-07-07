@@ -1,7 +1,6 @@
 ---
 title: "Uprobes and BPF"
 date: 2019-07-05T21:23:27-06:00
-draft: true
 description: |
     See how to use uprobes, BPF, bpftrace, BCC, and gobpf for performant
     dynamic instrumentation.
@@ -330,7 +329,7 @@ instrumentation entirely in user space!
 
 [virtualbox]: https://www.virtualbox.org/
 [vagrant]: https://www.vagrantup.com/
-[last-post]: https://wat.io/posts/automating-delve/
+[last-post]: /posts/automating-delve/
 [dtrace]: http://dtrace.org/blogs/about/
 [bpftrace]: https://github.com/iovisor/bpftrace
 [bcc]: https://github.com/iovisor/bcc

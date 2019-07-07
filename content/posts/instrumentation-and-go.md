@@ -165,7 +165,7 @@ In the next few posts on this topic, I will cover techniques that I have used to
 dynamically instrument Go programs. These include:
 
 - [Automating Delve][automating-delve]
-- uprobes and BPF
+- [uprobes and BPF][uprobes-and-bpf]
 - Frida
 
 I have gotten a good deal of benefit out of using these techniques, I hope you
@@ -178,3 +178,4 @@ do as well. Stay tuned!
 [dependency-graph]: /images/dependency-graph.png
 [streetlight-effect]: /images/streetlight.png
 [automating-delve]: /posts/automating-delve/
+[uprobes-and-bpf]: /posts/uprobes-and-bpf/
