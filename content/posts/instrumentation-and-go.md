@@ -2,7 +2,7 @@
 title: "Instrumentation and Go"
 date: 2019-06-25T10:27:18-06:00
 description: |
-    What is instrumentation? What kinds of instrumataion are available for Go
+    What is instrumentation? What kinds of instrumentation are available for Go
     programs and when should you use them? What is dynamic instrumentation?
 ---
 
