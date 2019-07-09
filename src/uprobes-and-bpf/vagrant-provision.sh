@@ -11,7 +11,11 @@ apt-get install --yes bison cmake flex g++ git libelf-dev zlib1g-dev \
 # clone src
 mkdir /build
 git clone --recursive https://github.com/iovisor/bcc /build/bcc
-git clone --recursive https://github.com/iovisor/bpftrace /build/bpftrace
+git clone \
+    --recursive \
+    --branch sym-fixes \
+    https://github.com/jasonkeene/bpftrace \
+    /build/bpftrace
 
 # build bcc
 mkdir -p /build/bcc/build
