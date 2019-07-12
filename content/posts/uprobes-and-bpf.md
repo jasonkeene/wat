@@ -20,11 +20,6 @@ example [Vagrantfile][vagrantfile] is provided with the [full source
 code][source] for this post. This will provision an ubuntu box with bpftrace
 and bcc installed and ready to use.
 
-**Note:** The code examples in this post require two small patches to bpftrace. I
-setup the vagrant provisioner to use a branch with these patches. If you are
-not using this provisioner just make sure your bpftrace build includes these
-two patches: [patch-1][patch-1] [patch-2][patch-2].
-
 To demonstrate how to write programs using uprobes and BPF, I will be using a
 few tools and libraries: [bpftrace][bpftrace], [BCC][bcc], and [gobpf][gobpf].
 No prior knowledge of these is required.

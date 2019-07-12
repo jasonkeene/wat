@@ -72,7 +72,7 @@ use cases.
 Let's create a test program that requires dynamic instrumentation. We can then
 write a program that automates delve to add the instrumentation we want.
 
-Note: The full source code for this experiment can be [found
+**Note:** The full source code for this experiment can be [found
 here][automating-delve-src].
 
 Our test program is just a hot loop that will increment a counter:
