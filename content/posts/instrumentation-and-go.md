@@ -7,9 +7,9 @@ description: |
 ---
 
 Instrumentation is anything that allows you to make measurements. For example
-the speedometer in your car that measures your velocity or the smoke detector
-in your house that measures how good of a cook you are. Instrumentation
-collects hard facts that you can use to understand and explain the world.
+the speedometer in your car that measures your speed or the smoke detector in
+your house that measures how good of a cook you are. Instrumentation collects
+hard facts that you can use to understand and explain the world.
 Instrumentation is critical to our understanding of software.
 
 In this series of posts we will walk through several techniques for

@@ -30,18 +30,19 @@ Let's get started!
 
 Uprobes is a capability of the Linux kernel to add instrumentation to any
 instruction in user-space. It functions in a similar way to ptrace. It uses
-the same software interrupt mechanism and the uprobe handlers can even receive
-`pt_regs` as an argument which is the ptrace registers struct. Where it
-differs significantly from ptrace is that it operates on files vs processes.
-You set a uprobe at a certain offset in an executable file. This might seem
-strange, however, it offers some benefits. For instance, you can instrument
-multiple instances of a program at once. You can also instrument a .so that is
-dynamically linked to by multiple other programs. You don't need to instrument
-these programs individually. A good example would be the function `accept`
-which is defined in libc. Almost all programs that accept connections would
-use this function to do so. uprobes also provides a filtering mechanism for
-reducing the set of events quickly. This can be used to filter out events from
-programs you are not interested in.
+the same interrupt mechanism as ptrace to halt the program. It writes a
+software interrupt (a breakpoint) into the program's text. Additionally, the
+uprobe handlers receives `pt_regs` as an argument which is the ptrace
+registers struct. Where it differs significantly from ptrace is that it
+operates on files vs processes.  You set a uprobe at a certain offset in an
+executable file. This might seem strange, however, it offers some benefits.
+For instance, you can instrument multiple instances of a program at once. You
+can also instrument a shared object that is dynamically linked to by multiple
+other programs. You don't need to instrument these programs individually. A
+good example would be the function `accept` which is defined in libc. Almost
+all programs that accept connections would use this function to do so. uprobes
+also provides a filtering mechanism for reducing the set of events quickly.
+This can be used to filter out events from programs you are not interested in.
 
 Let's see what the execution flow looks like for uprobes:
 

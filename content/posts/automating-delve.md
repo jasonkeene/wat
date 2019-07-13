@@ -10,6 +10,11 @@ In my [last post][last-post], we discussed the different forms of
 instrumentation and how dynamic instrumentation can be useful. Let's
 investigate how we might use debuggers to dynamically instrument live systems.
 
+We will be using the [delve][delve] debugger in this post. I recommend
+[getting it installed][delve-install] and perhaps running through the [getting
+started guide][delve-getting-started]. If you have prior experience with delve
+or other debuggers this won't be necessary.
+
 ## Debuggers and ptrace
 
 Debuggers are awesome! This is how I feel when I start a debugger:
@@ -24,8 +29,8 @@ and write to its registers and memory and single step through the program.
 Since the debugger can write to the memory of the tracee, this allows it to
 set breakpoints that will suspend execution of the tracee once they are hit.
 We can then inspect the state of the tracee, allowing us to add arbitrary
-insturmentation logic. It is super interesting how this works. To set a
-breakpoint the debugger:
+insturmentation logic. It is super interesting how this works. In order to set
+a breakpoint, the debugger:
 
 1. Saves a copy of the instruction from the tracee's memory where the
    breakpoint should go
@@ -242,5 +247,9 @@ instrument events that occur at a higher frequency!
 [next-post]: /posts/uprobes-and-bpf/
 [gdb]: /images/gdb.gif
 [ptrace]: http://man7.org/linux/man-pages/man2/ptrace.2.html
+[delve]: https://github.com/go-delve/delve
+[delve-install]: https://github.com/go-delve/delve/tree/master/Documentation/installation
+[delve-getting-started]: https://github.com/go-delve/delve/blob/master/Documentation/cli/getting_started.md
 [delve-api-client]: https://godoc.org/github.com/go-delve/delve/service/rpc2#RPCClient
 [automating-delve-src]: https://github.com/jasonkeene/wat/tree/master/src/automating-delve
+
