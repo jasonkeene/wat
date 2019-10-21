@@ -4,6 +4,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"sync/atomic"
 	"time"
@@ -19,19 +20,25 @@ func doWork() {
 	atomic.AddInt64(&counter, 1)
 }
 
+var report = flag.Bool("report", false, "Report the state of the counter every second.")
+
 func main() {
+	flag.Parse()
+
 	fmt.Println("This is a blackbox. Read my counter.")
 
-	go func() {
-		p := message.NewPrinter(language.English)
-		var prev int64
-		for {
-			count := atomic.LoadInt64(&counter)
-			p.Printf("counter: %d\t(%d ops/s)\n", count, count-prev)
-			prev = count
-			time.Sleep(time.Second)
-		}
-	}()
+	if *report {
+		go func() {
+			p := message.NewPrinter(language.English)
+			var prev int64
+			for {
+				count := atomic.LoadInt64(&counter)
+				p.Printf("counter: %d\t(%d ops/s)\n", count, count-prev)
+				prev = count
+				time.Sleep(time.Second)
+			}
+		}()
+	}
 	for {
 		doWork()
 	}
